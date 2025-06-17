@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management Board project Work</title>
+    <link rel="stylesheet" href="/ToDo - project/todo.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <div class="top-bar">
+  <h1>Task Management Board</h1>
+  <div class="top-controls">
+    <button class="add-btn" onclick="openModal()">+ Add Task</button>
+    <div class="view-mode-selector">
+      <label for="viewMode">View Mode:</label>
+      <select id="viewMode">
+        <option value="kanban">Kanban View</option>
+        <option value="list">List View</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+    <div class="board">
+        <div class="column" data-status="Not Started">
+        <h3>Not Started</h3>
+
+        </div>
+        <div class="column" data-status="Scheduled">
+        <h3>Scheduled</h3>
+
+        </div>
+        <div class="column" data-status="In Progress">
+        <h3>In Progress</h3>
+
+        </div>
+        <div class="column" data-status="Completed">
+        <h3>Completed</h3>
+        
+        </div>
+    </div>
+
+
+
+    <div id="listViewContainer" >
+        <h3>All Tasks (List View)</h3>
+        <div id="listViewTasks"></div>
+    </div>
+
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2><i class="fas fa-clipboard-list"></i> Create Task</h2>
+
+        <label for="taskName"><i class="fas fa-heading"></i> Task Name:</label>
+        <input type="text" id="taskName" placeholder="Enter task title..." required />
+
+        <label for="desc"><i class="fas fa-align-left"></i> Description:</label>
+        <textarea id="taskDesc" placeholder="Write task details..."></textarea>
+
+        <label for="status"><i class="fas fa-list-check"></i> Status:</label>
+        <div class="status-options" id="taskStatus">
+            <input type="radio" id="statusNotStarted" name="taskStatus" value="Not Started" checked />
+            <label for="statusNotStarted">Not Started</label>
+
+            <input type="radio" id="statusScheduled" name="taskStatus" value="Scheduled" />
+            <label for="statusScheduled">Scheduled</label>
+
+            <input type="radio" id="statusInProgress" name="taskStatus" value="In Progress" />
+            <label for="statusInProgress">In Progress</label>
+
+            <input type="radio" id="statusCompleted" name="taskStatus" value="Completed" />
+            <label for="statusCompleted">Completed</label>
+        </div>
+
+        <label><i class="fas fa-comment-dots"></i> Comment:</label>
+        <textarea id="taskComment" placeholder="Optional notes or comment..."></textarea>
+
+        <label><i class="fas fa-calendar-day"></i> Start Date:</label>
+        <input type="date" id="taskStartDate" />
+
+        <label><i class="fas fa-calendar-check"></i> End Date:</label>
+        <input type="date" id="taskDeadline" />
+
+        <label><i class="fas fa-exclamation-triangle"></i> Passed Deadline:</label>
+        <input type="date" id="taskPassedDeadline" />
+
+        <button class="add-btn" onclick="addTask()">
+            <i class="fas fa-paper-plane"></i> Save Task
+        </button>
+        </div>
+    </div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h4>About Task Board</h4>
+      <p>A lightweight and responsive task management board to organize your daily work with ease. Switch between Kanban and List views effortlessly.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="openModal()" >Add Task</a></li>
+        <li><a href="#listViewContainer">View Tasks</a></li>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>Email: <a href="mailto:support@taskboard.com">support@taskboard.com</a></p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Trichy, Tamil Nadu</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 TaskBoard. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="/ToDo - project/todo.js"></script>
+
+</body>
+</html>
