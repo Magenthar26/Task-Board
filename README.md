@@ -21,7 +21,7 @@ A responsive and interactive **Task Management Dashboard** built with HTML, CSS,
 ### Keyboard Shortcuts
 - **Ctrl+N**: Open task creation modal
 - **Ctrl+F**: Focus search input
-- **Delete**: Remove the last task in the list
+
 
 ### Persistence
 - Tasks are stored in browser `localStorage`
