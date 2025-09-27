@@ -582,3 +582,105 @@ header {
     justify-content: center;
   }
 }
+
+/* Toast */
+.toast {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #111827;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 200ms, transform 200ms;
+  z-index: 2000;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Control Group */
+.top-controls .control-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.top-controls input[type="search"] {
+  padding: 0.45rem 2rem 0.45rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.95rem;
+  outline: none;
+  transition: box-shadow 0.2s, background 0.2s;
+  background-color: #e6f0ff;
+  color: #333;
+}
+
+.top-controls input[type="search"]:focus {
+  box-shadow: 0 0 0 2px #4a90e2;
+  background-color: #fff;
+}
+
+.search-icon {
+  position: absolute;
+  right: 8px;
+  font-size: 0.9rem;
+  color: #4a90e2;
+}
+
+/* Dropdowns */
+.top-controls select {
+  padding: 0.45rem 0.7rem;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #e6f0ff;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.top-controls select:focus {
+  box-shadow: 0 0 0 2px #4a90e2;
+  background-color: #fff;
+}
+
+/* Add Button */
+.top-controls .add-btn {
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid white;
+  transition: all 0.2s;
+}
+
+.top-controls .add-btn:hover {
+  background-color: #3570d4;
+  color: white;
+  border-color: #3570d4;
+}
+
+/* View Mode Selector */
+.view-mode-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.view-mode-selector label {
+  font-weight: 600;
+}
+
+.view-mode-selector select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  border: none;
+  background-color: #e6f0ff;
+  cursor: pointer;
+}

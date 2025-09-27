@@ -12,7 +12,37 @@
     <div class="top-bar">
   <h1>Task Management Board</h1>
   <div class="top-controls">
+<div class="control-group">
+      <input id="searchInput" type="search" placeholder="Search tasks..." title="Ctrl+F to focus" />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+
+    <!-- Filter Status -->
+    <div class="control-group">
+      <select id="filterStatus">
+        <option value="">All Status</option>
+        <option>Not Started</option>
+        <option>Scheduled</option>
+        <option>In Progress</option>
+        <option>Completed</option>
+        <option>Pending</option>
+      </select>
+    </div>
+
+    <!-- Sort By -->
+    <div class="control-group">
+      <select id="sortBy">
+        <option value="none">Sort: None</option>
+        <option value="deadlineAsc">Deadline ↑</option>
+        <option value="deadlineDesc">Deadline ↓</option>
+        <option value="nameAsc">Name A→Z</option>
+      </select>
+    </div>
+
+    <!-- Add Task -->
     <button class="add-btn" onclick="openModal()">+ Add Task</button>
+
+    <!-- View Mode -->
     <div class="view-mode-selector">
       <label for="viewMode">View Mode:</label>
       <select id="viewMode">
@@ -22,7 +52,6 @@
     </div>
   </div>
 </div>
-
     <div class="board">
         <div class="column" data-status="Not Started">
         <h3>Not Started</h3>
@@ -94,6 +123,8 @@
         </div>
     </div>
 
+
+
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-section">
@@ -116,6 +147,7 @@
       <p>Location: Trichy, Tamil Nadu</p>
     </div>
   </div>
+
   <div class="footer-bottom">
     <p>&copy; 2025 TaskBoard. All rights reserved.</p>
   </div>

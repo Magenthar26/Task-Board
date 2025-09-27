@@ -155,6 +155,7 @@ function saveAllTasks() {
 
   localStorage.setItem("tasks", JSON.stringify(tasksData));
 }
+localStorage.setItem("tasks", JSON.stringify(sampleTasks));
 
 function addTask() {
   const name = taskNameInput.value.trim();
@@ -340,4 +341,64 @@ window.addEventListener("load", () => {
 
 viewModeSelect.addEventListener("change", e => {
   switchViewMode(e.target.value);
+});
+
+
+function showToast(msg, timeout=2000) {
+  const toast = document.getElementById("toast");
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(() => toast.classList.remove("show"), timeout);
+}
+function showLoading() { document.getElementById("loadingOverlay").hidden = false; }
+function hideLoading() { document.getElementById("loadingOverlay").hidden = true; }
+
+
+function applyFiltersAndSort() {
+  let tasks = getUniqueTasksByContent();
+
+  const status = document.getElementById("filterStatus").value;
+  const search = document.getElementById("searchInput").value.toLowerCase();
+  const sort = document.getElementById("sortBy").value;
+
+  if (status) tasks = tasks.filter(t => t.status === status);
+  if (search) tasks = tasks.filter(t => 
+    (t.name + t.desc + t.comment).toLowerCase().includes(search)
+  );
+
+  if (sort === "deadlineAsc") tasks.sort((a,b)=>(a.deadline||"").localeCompare(b.deadline||""));
+  if (sort === "deadlineDesc") tasks.sort((a,b)=>(b.deadline||"").localeCompare(a.deadline||""));
+  if (sort === "nameAsc") tasks.sort((a,b)=>(a.name||"").localeCompare(b.name||""));
+
+  
+  clearBoardTasks();
+  tasks.forEach(t=>{
+    const el = createTaskElement(t);
+    const col = document.querySelector(`[data-status="${t.status}"]`) 
+              || document.querySelector('[data-status="Not Started"]');
+    col.appendChild(el);
+  });
+}
+
+
+["searchInput","filterStatus","sortBy"].forEach(id=>{
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener("input", applyFiltersAndSort);
+    el.addEventListener("change", applyFiltersAndSort);
+  }
+});
+
+
+window.addEventListener("load", applyFiltersAndSort);
+
+
+window.addEventListener("keydown",(e)=>{
+  const ctrl = e.ctrlKey || e.metaKey;
+  if (ctrl && e.key.toLowerCase()==="n") { e.preventDefault(); openModal(); }
+  if (ctrl && e.key.toLowerCase()==="f") { e.preventDefault(); document.getElementById("searchInput").focus(); }
+  if (e.key==="Delete") {
+    const last = document.querySelector(".task:last-child");
+    if (last) { last.remove(); saveAllTasks(); showToast("Task deleted"); }
+  }
 });
